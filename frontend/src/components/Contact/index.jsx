@@ -23,7 +23,6 @@ export const Contact = ({ photo, name, number, buttonText }) => {
       <ButtonContainer>
         <Button>{buttonText}</Button>
         <Button>{buttonText}</Button>
-        <Button>{buttonText}</Button>
       </ButtonContainer>
     </ContactContainer>
   );

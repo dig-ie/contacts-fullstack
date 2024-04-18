@@ -10,7 +10,7 @@ export const ButtonStyled = styled.button`
   height: 30px;
 
   border-radius: 4px;
-  background-color: gray;
+  background-color: white;
   border: none;
   color: white;
   text-align: center;

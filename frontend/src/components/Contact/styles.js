@@ -15,6 +15,7 @@ export const ContactContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
+  padding: 0.75rem;
   margin-bottom: 0.75rem;
 
   border-radius: 8px;

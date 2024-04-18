@@ -1,6 +1,6 @@
 import { SearchBar } from "./components/SearchBar";
 import { Contact } from "./components/Contact";
-import { Form } from "./components/Form";
+import { ModalForm } from "./components/ModalForm";
 import React, { useState, useEffect } from "react";
 
 function App() {
@@ -40,7 +40,8 @@ function App() {
           number={contact.phoneNumber}
         />
       ))}
-      <Form />
+      <Contact/>
+      <ModalForm />
     </>
   );
 }
