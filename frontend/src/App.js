@@ -1,5 +1,6 @@
 import { SearchBar } from "./components/SearchBar";
 import { Contact } from "./components/Contact";
+import { Form } from "./components/Form";
 import React, { useState, useEffect } from "react";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           number={contact.phoneNumber}
         />
       ))}
+      <Form />
     </>
   );
 }
