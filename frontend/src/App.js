@@ -42,6 +42,7 @@ function App() {
           name={contact.contactName}
           number={contact.phoneNumber}
           buttonImg={PlusIcon}
+          buttonText="+"
         />
       ))}
       <Contact />

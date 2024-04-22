@@ -20,6 +20,10 @@ export const ButtonStyled = styled.button`
   margin: 4px 2px;
   cursor: pointer;
   box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra interna */
+
+  color: black;
+
+  font-weight: 600;
 `;
 
 export const ButtonImg = styled.img`

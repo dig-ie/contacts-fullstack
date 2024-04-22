@@ -33,9 +33,11 @@ export const Contact = ({ photo, name, number, buttonText, buttonImg }) => {
       </UserInfoContainer>
       <ButtonContainer>
         <>
-          <Button onClick={abrirModal} buttonImg={buttonImg}>
-            {buttonText}
-          </Button>
+          <Button
+            onClick={abrirModal}
+            buttonImg={buttonImg}
+            buttonText={buttonText}
+          ></Button>
           {modalAberto && (
             <ModalForm
               fecharModal={fecharModal}

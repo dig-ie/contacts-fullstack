@@ -20,6 +20,8 @@ export const FormContainer = styled.div`
   font-family: "Open Sans", sans-serif;
 
   background-color: white;
+
+  z-index: 600;
 `;
 
 export const StyledLabel = styled.label`
@@ -40,4 +42,3 @@ export const ButtonContainer = styled.div`
   gap: 8px;
   align-items: center;
 `;
-
