@@ -14,7 +14,7 @@ router.use((req, res, next) => {
 });
 
 // Rota para criar um novo número de telefone
-router.post("/contacts", phoneController.createPhone);
+router.post("/contacts/post", phoneController.createPhone);
 
 // Rota para buscar todos os números de telefone
 router.get("/contacts", phoneController.getAllPhones);

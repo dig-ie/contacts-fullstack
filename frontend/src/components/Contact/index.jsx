@@ -7,10 +7,21 @@ import {
   NumberText,
   ButtonContainer,
 } from "./styles";
+import { ModalForm } from "../ModalForm";
+import React, { useState } from "react";
 
 import { Button } from "../Button";
 
-export const Contact = ({ photo, name, number, buttonText }) => {
+export const Contact = ({ photo, name, number, buttonText, buttonImg }) => {
+  const [modalAberto, setModalAberto] = useState(false);
+
+  const abrirModal = () => {
+    setModalAberto(true);
+  };
+
+  const fecharModal = () => {
+    setModalAberto(false);
+  };
   return (
     <ContactContainer>
       <UserInfoContainer>
@@ -21,8 +32,18 @@ export const Contact = ({ photo, name, number, buttonText }) => {
         </TextInfoContainer>
       </UserInfoContainer>
       <ButtonContainer>
-        <Button>{buttonText}</Button>
-        <Button>{buttonText}</Button>
+        <>
+          <Button onClick={abrirModal} buttonImg={buttonImg}>
+            {buttonText}
+          </Button>
+          {modalAberto && (
+            <ModalForm
+              fecharModal={fecharModal}
+              closeBtnbackgroundColor="red"
+            />
+          )}
+        </>
+        <Button buttonImg={buttonImg}>{buttonText}</Button>
       </ButtonContainer>
     </ContactContainer>
   );

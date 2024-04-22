@@ -1,5 +1,10 @@
-import { ButtonStyled } from "./styles";
+import { ButtonStyled, ButtonImg } from "./styles";
 
-export const Button = ({ buttonText }) => {
-  return <ButtonStyled>{buttonText}</ButtonStyled>;
+export const Button = ({ onClick, buttonText, buttonImg }) => {
+  return (
+    <>
+      <ButtonStyled onClick={onClick}>{buttonText}</ButtonStyled>
+      <ButtonImg src={buttonImg} />
+    </>
+  );
 };

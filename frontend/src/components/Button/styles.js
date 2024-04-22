@@ -21,3 +21,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra interna */
 `;
+
+export const ButtonImg = styled.img`
+  display: inline-block;
+`;

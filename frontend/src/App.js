@@ -2,9 +2,14 @@ import { SearchBar } from "./components/SearchBar";
 import { Contact } from "./components/Contact";
 import { ModalForm } from "./components/ModalForm";
 import React, { useState, useEffect } from "react";
+import PlusIcon from "./icons/plusIcon.jpg";
 
 function App() {
   const [contacts, setContacts] = useState([]);
+  const [newContact, setNewContact] = useState({
+    contactName: "",
+    phoneNumber: "",
+  });
 
   useEffect(() => {
     // Função assíncrona para buscar os contatos
@@ -24,12 +29,10 @@ function App() {
         console.error("Erro ao buscar contatos:", error);
       }
     };
-
     // Chama a função para buscar os contatos
     fetchContacts();
   }, []); // Chama apenas uma vez, quando o componente é montado
 
-  // Renderiza os contatos na sua interface
   return (
     <>
       <SearchBar placeholder="Search" />
@@ -38,10 +41,11 @@ function App() {
           key={contact._id}
           name={contact.contactName}
           number={contact.phoneNumber}
+          buttonImg={PlusIcon}
         />
       ))}
-      <Contact/>
-      <ModalForm />
+      <Contact />
+      {/* <ModalForm /> */}
     </>
   );
 }

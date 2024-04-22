@@ -18,6 +18,8 @@ export const FormContainer = styled.div`
   padding: 0.75rem;
 
   font-family: "Open Sans", sans-serif;
+
+  background-color: white;
 `;
 //label
 export const StyledLabel = styled.label`
@@ -28,6 +30,13 @@ export const StyledLabel = styled.label`
   align-self: flex-start;
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div``;
 
-`
+export const ButtonContainer = styled.div`
+  height: 65px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+`;
