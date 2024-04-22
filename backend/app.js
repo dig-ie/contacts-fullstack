@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(routes);
 
 // Inicia o servidor Express
-const PORT = process.env.PORT || 3000; // Alterado para 3000 como exemplo, ajuste conforme necessário
+const PORT = process.env.PORT || 3000; 
 app.listen(PORT, () => {
   console.log(`Servidor Express ouvindo na porta ${PORT}`);
 });

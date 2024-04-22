@@ -21,7 +21,7 @@ export const FormContainer = styled.div`
 
   background-color: white;
 `;
-//label
+
 export const StyledLabel = styled.label`
   color: black;
   font-style: bold;
@@ -40,3 +40,4 @@ export const ButtonContainer = styled.div`
   gap: 8px;
   align-items: center;
 `;
+
