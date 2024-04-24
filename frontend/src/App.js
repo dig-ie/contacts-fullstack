@@ -1,6 +1,6 @@
 import { SearchBar } from "./components/SearchBar";
 import { Contact } from "./components/Contact";
-import { ModalForm } from "./components/ModalForm";
+// import { ModalForm } from "./components/ModalForm";
 import React, { useState, useEffect } from "react";
 import PlusIcon from "./icons/plusIcon.jpg";
 

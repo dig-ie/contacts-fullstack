@@ -17,6 +17,7 @@ export const Contact = ({ photo, name, number, buttonText, buttonImg }) => {
 
   const abrirModal = () => {
     setModalAberto(true);
+    console.log(modalAberto);
   };
 
   const fecharModal = () => {

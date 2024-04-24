@@ -21,7 +21,7 @@ export const FormContainer = styled.div`
 
   background-color: white;
 
-  z-index: 600;
+  z-index: 800;
 `;
 
 export const StyledLabel = styled.label`
