@@ -7,22 +7,23 @@ import {
   NumberText,
   ButtonContainer,
 } from "./styles";
-import { ModalForm } from "../ModalForm";
 import React, { useState } from "react";
-
 import { Button } from "../Button";
 
-export const Contact = ({ photo, name, number, buttonText, buttonImg }) => {
-  const [modalAberto, setModalAberto] = useState(false);
+export const Contact = ({
+  photo,
+  name,
+  number,
+  buttonText,
+  buttonImg,
+  key,
+  onClick1,
+  onClick2,
+}) => {
+  //States
 
-  const abrirModal = () => {
-    setModalAberto(true);
-    console.log(modalAberto);
-  };
+  // Defina o contato que está sendo editado
 
-  const fecharModal = () => {
-    setModalAberto(false);
-  };
   return (
     <ContactContainer>
       <UserInfoContainer>
@@ -33,20 +34,14 @@ export const Contact = ({ photo, name, number, buttonText, buttonImg }) => {
         </TextInfoContainer>
       </UserInfoContainer>
       <ButtonContainer>
-        <>
-          <Button
-            onClick={abrirModal}
-            buttonImg={buttonImg}
-            buttonText={buttonText}
-          ></Button>
-          {modalAberto && (
-            <ModalForm
-              fecharModal={fecharModal}
-              closeBtnbackgroundColor="red"
-            />
-          )}
-        </>
-        <Button buttonImg={buttonImg}>{buttonText}</Button>
+        <Button
+          onClick={onClick1}
+          buttonImg={buttonImg}
+          buttonText={"editar"}
+        />
+        <Button onClick={onClick2} buttonImg={buttonImg}>
+          {buttonText}
+        </Button>
       </ButtonContainer>
     </ContactContainer>
   );
