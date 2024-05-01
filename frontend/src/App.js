@@ -8,43 +8,52 @@ import PlusIcon from "./icons/plusIcon.jpg";
 import axios from "axios";
 
 function App() {
+  const [editingNumero, setEditingNumero] = useState("");
+  const [editingNome, setEditingNome] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [editModalAberto, setEditModalAberto] = useState(false);
   const [contacts, setContacts] = useState([]);
-  const [newContact, setNewContact] = useState({
-    contactName: "",
-    phoneNumber: "",
-  });
+
   const [editingContact, setEditingContact] = useState(null);
-
-  const abrirModal = () => {
-    setModalAberto(true);
-    console.log(modalAberto);
-  };
-
-  const fecharModal = () => {
-    setModalAberto(false);
-  };
 
   const handleEditClick = (key) => {
     setEditingContact(key);
     console.log(editingContact);
   };
 
-  // ENVIANDO A REQUISIÇÃO DE PUT/PATCH PARA O BANCO DE DADOS
-  const handleEditSubmit = async (editedData) => {
+  // FUNÇÃO PARA ENVIAR A REQUISIÇÃO DE PUT/PATCH PARA O BANCO DE DADOS
+  // const handleEditSubmit = async (editedData) => {
+  //   try {
+  //     // Enviar solicitação de edição para o backend
+  //     const response = await axios.put(
+  //       `http://localhost:3000/contacts/${editingContact}`,
+  //       editedData
+  //     );
+  //     // Atualizar lista de contatos após a edição
+  //     // (atualização depende da estrutura de dados e do método usado)
+  //     console.log("Contato editado com sucesso:", response.data);
+  //     // Desativar o modo de edição
+  //     setEditingContact(null);
+  //   } catch (error) {
+  //     console.error("Erro ao editar contato:", error);
+  //   }
+  // };
+  const handleUpdateClick = async () => {
     try {
-      // Enviar solicitação de edição para o backend
       const response = await axios.put(
-        `http://localhost:3000/contacts/${editingContact}`,
-        editedData
+        "http://localhost:3000/contacts/update",
+        {
+          phoneNumber: editingContact,
+          contactName: editingNome,
+        }
       );
-      // Atualizar lista de contatos após a edição
-      // (atualização depende da estrutura de dados e do método usado)
-      console.log("Contato editado com sucesso:", response.data);
-      // Desativar o modo de edição
-      setEditingContact(null);
+      // Aqui você pode tratar a resposta se necessário
+      console.log(response.data);
+      // Feche o modal após o sucesso
+      fecharModal();
     } catch (error) {
-      console.error("Erro ao editar contato:", error);
+      // Aqui você pode tratar o erro
+      console.error("Erro ao atualizar contato:", error);
     }
   };
 
@@ -61,7 +70,6 @@ function App() {
         const data = await response.json();
         // Atualiza o estado com os contatos recebidos
         setContacts(data);
-        console.log(data);
       } catch (error) {
         console.error("Erro ao buscar contatos:", error);
       }
@@ -74,9 +82,19 @@ function App() {
     <>
       <SearchBar placeholder="Search" />
       <>
-        <Button onClick={abrirModal} buttonText={"abrir"}></Button>
+        <Button
+          onClick={() => {
+            setModalAberto(!modalAberto);
+          }}
+          buttonText={"abrir"}
+        ></Button>
         {modalAberto && (
-          <ModalForm fecharModal={fecharModal} closeBtnbackgroundColor="red" />
+          <ModalForm
+            fecharModal={() => {
+              setModalAberto(!modalAberto);
+            }}
+            closeBtnbackgroundColor="red"
+          />
         )}
       </>
       {contacts.map((contact) => (
@@ -85,12 +103,24 @@ function App() {
           name={contact.contactName}
           number={contact.phoneNumber}
           buttonImg={PlusIcon}
-          onClick1={handleEditClick}
+          onClick1={() => {
+            handleEditClick(contact._id);
+            setEditModalAberto(!editModalAberto);
+          }}
         />
       ))}
       <Contact />
-      {editingContact != null && <ModalForm></ModalForm>}
-      {/* <ModalForm /> */}
+      {editingContact != null && editModalAberto ? (
+        <ModalForm
+          fecharModal={() => {
+            setEditModalAberto(!editModalAberto);
+          }}
+          closeBtnbackgroundColor="red"
+          submitEditedData={() => {
+            handleEditSubmit();
+          }}
+        />
+      ) : null}
     </>
   );
 }

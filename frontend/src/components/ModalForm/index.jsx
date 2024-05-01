@@ -4,7 +4,7 @@ import { FormContainer, StyledLabel, ButtonContainer } from "./styles";
 import { Input } from "../Input";
 import { PrimaryButton } from "../PrimaryButton";
 
-export const ModalForm = ({ fecharModal, closeBtnbackgroundColor, key }) => {
+export const ModalForm = ({ fecharModal, closeBtnbackgroundColor, submitEditedData }) => {
   const [numero, setNumero] = useState("");
   const [nome, setNome] = useState("");
   //funçao para adicionar contato no CLICK DO BOTÃO

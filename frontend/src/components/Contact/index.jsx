@@ -16,7 +16,6 @@ export const Contact = ({
   number,
   buttonText,
   buttonImg,
-  key,
   onClick1,
   onClick2,
 }) => {
