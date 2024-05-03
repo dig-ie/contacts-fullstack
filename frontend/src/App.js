@@ -19,26 +19,22 @@ function App() {
     // console.log(editingContact);
   };
 
-  useEffect(() => {
-    // Função assíncrona para buscar os contatos
-    const fetchContacts = async () => {
-      try {
-        // Faz a requisição para o backend
-        const response = await fetch("http://localhost:3000/contacts/");
-        if (!response.ok) {
-          throw new Error("Falha ao buscar contatos");
-        }
-        // Converte a resposta para JSON
-        const data = await response.json();
-        // Atualiza o estado com os contatos recebidos **
-        setContacts(data);
-      } catch (error) {
-        console.error("Erro ao buscar contatos:", error);
+  const fetchContacts = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/contacts/");
+      if (!response.ok) {
+        throw new Error("Falha ao buscar contatos");
       }
-    };
-    // Chama a função para buscar os contatos
+      const data = await response.json();
+      setContacts(data);
+    } catch (error) {
+      console.error("Erro ao buscar contatos:", error);
+    }
+  };
+  
+  useEffect(() => {
     fetchContacts();
-  }); // Chama apenas uma vez, quando o componente é montado
+  }, [contacts]); // Dependência: contacts
 
   // useEffect(() => {
   //   if (editModalAberto && editingContact !== null) {

@@ -29,7 +29,7 @@ export const ModalForm = ({
       fecharModal();
     } catch (error) {
       // Aqui você pode tratar o erro
-      console.error("Erro ao adicionar contatoo:", error);
+      console.error("Erro ao adicionar contato:", error);
     }
   };
 
