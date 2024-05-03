@@ -6,6 +6,8 @@ import { ModalForm } from "./components/ModalForm";
 import React, { useState, useEffect } from "react";
 import PlusIcon from "./icons/plusIcon.jpg";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
 
 function App() {
   //STATES
@@ -31,7 +33,7 @@ function App() {
       console.error("Erro ao buscar contatos:", error);
     }
   };
-  
+
   useEffect(() => {
     fetchContacts();
   }, [contacts]); // Dependência: contacts
@@ -44,52 +46,59 @@ function App() {
   // }, [editModalAberto, editingContact]);
 
   return (
-    <>
-      <SearchBar placeholder="Search" />
-      <>
-        {/* BOTÃO ADICIONAR CONTATO - "abrir" */}
-        <Button
-          onClick={() => {
-            setModalAberto(!modalAberto);
-          }}
-          buttonText={"abrir"}
-        ></Button>
-        {modalAberto && (
-          <ModalForm
-            formType="creating"
-            fecharModal={() => {
-              setModalAberto(!modalAberto);
-            }}
-            closeBtnbackgroundColor="red"
-          />
-        )}
-      </>
-      {/* LISTA CONTATOS - mapeando array do STATE*/}
-      {contacts.map((contact) => (
-        <Contact
-          key={contact._id}
-          name={contact.contactName}
-          number={contact.phoneNumber}
-          buttonImg={PlusIcon}
-          onClick1={() => {
-            handleEditClick(contact._id);
-            setEditModalAberto(!editModalAberto);
-          }}
-        />
-      ))}
+    // <>
+    //   <SearchBar placeholder="Search" />
+    //   <>
+    //     {/* BOTÃO ADICIONAR CONTATO - "abrir" */}
+    //     <Button
+    //       onClick={() => {
+    //         setModalAberto(!modalAberto);
+    //       }}
+    //       buttonText={"abrir"}
+    //     ></Button>
+    //     {modalAberto && (
+    //       <ModalForm
+    //         formType="creating"
+    //         fecharModal={() => {
+    //           setModalAberto(!modalAberto);
+    //         }}
+    //         closeBtnbackgroundColor="red"
+    //       />
+    //     )}
+    //   </>
+    //   {/* LISTA CONTATOS - mapeando array do STATE*/}
+    //   {contacts.map((contact) => (
+    //     <Contact
+    //       key={contact._id}
+    //       name={contact.contactName}
+    //       number={contact.phoneNumber}
+    //       buttonImg={PlusIcon}
+    //       onClick1={() => {
+    //         handleEditClick(contact._id);
+    //         setEditModalAberto(!editModalAberto);
+    //       }}
+    //     />
+    //   ))}
 
-      {/* MODAL DE EDIÇÃO DE CONTATO */}
-      {editingContact !== null && editModalAberto ? (
-        <ModalForm
-          formType="editing"
-          fecharModal={() => {
-            setEditModalAberto(!editModalAberto);
-          }}
-          closeBtnbackgroundColor="red"
-          editingContact={editingContact}
-        />
-      ) : null}
-    </>
+    //   {/* MODAL DE EDIÇÃO DE CONTATO */}
+    //   {editingContact !== null && editModalAberto ? (
+    //     <ModalForm
+    //       formType="editing"
+    //       fecharModal={() => {
+    //         setEditModalAberto(!editModalAberto);
+    //       }}
+    //       closeBtnbackgroundColor="red"
+    //       editingContact={editingContact}
+    //     />
+    //   ) : null}
+    // </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/Login" element={<Login />} /> */}
+        {/* <Route path="/UserHome" element={<UserHome />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
