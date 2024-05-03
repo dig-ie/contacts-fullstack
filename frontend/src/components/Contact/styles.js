@@ -6,19 +6,25 @@ export const UserImg = styled.img`
 `;
 
 export const ContactContainer = styled.div`
-  min-height: 800px;
+  /* min-height: 800px; */
   min-height: 50px;
   /* color: transparent; */
-  background-color: RGB(53, 70, 209);
+  width: 100%;
+  background-color: white;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  padding: 0.75rem;
+  padding: 0;
   margin-bottom: 0.75rem;
 
-  border-radius: 8px;
+  border-bottom: solid 1px gray;
+  transition: background-color 0.1s ease; /* Adicionando a transição */
+  &:hover {
+    background-color: lightgray;
+    transition: 0;
+  }
 `;
 
 export const UserInfoContainer = styled.div`

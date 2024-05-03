@@ -89,6 +89,7 @@ export const Home = () => {
           editingContact={editingContact}
         />
       ) : null}
+      <Contact />
     </>
   );
 };
