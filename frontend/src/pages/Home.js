@@ -3,11 +3,10 @@ import { Contact } from "../components/Contact";
 import { Button } from "../components/Button";
 import { ModalForm } from "../components/ModalForm";
 import React, { useState, useEffect } from "react";
-import PlusIcon from "../icons/plusIcon.jpg";
-// import axios from "axios";
+import EditIcon from "../icons/editIcon.png";
 
 export const Home = () => {
-  //STATES;
+  // STATES
   const [modalAberto, setModalAberto] = useState(false);
   const [editModalAberto, setEditModalAberto] = useState(false);
   const [contacts, setContacts] = useState([]);
@@ -15,12 +14,12 @@ export const Home = () => {
 
   const handleEditClick = (key) => {
     setEditingContact(key);
-    console.log(editingContact);
+    setEditModalAberto(true);
   };
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch("http:localhost:3000/contacts/");
+      const response = await fetch("http://localhost:3000/contacts/"); // Corrigido o URL
       if (!response.ok) {
         throw new Error("Falha ao buscar contatos");
       }
@@ -33,63 +32,53 @@ export const Home = () => {
 
   useEffect(() => {
     fetchContacts();
-  }, [contacts]);
-  //Dependência: contacts;
+  }, []); // Dependência vazia para evitar chamadas de API redundantes
 
   useEffect(() => {
     if (editModalAberto && editingContact !== null) {
-      //Definir editingContact como null após ModalForm receber o valor atual
-      setEditingContact(null);
+      // Aqui, poderia ser adicionado algum efeito ou lógica se necessário quando o modal de edição é aberto.
     }
   }, [editModalAberto, editingContact]);
 
   return (
     <>
       <SearchBar placeholder="Search" />
-      <>
-        {/* BOTÃO ADICIONAR CONTATO - "abrir" */}
-        <Button
-          onClick={() => {
-            setModalAberto(!modalAberto);
+      <Button
+        onClick={() => {
+          setModalAberto(true);
+        }}
+        buttonText={"abrir"}
+      />
+      {modalAberto && (
+        <ModalForm
+          formType="creating"
+          fecharModal={() => {
+            setModalAberto(false);
           }}
-          buttonText={"abrir"}
-        ></Button>
-        {modalAberto && (
-          <ModalForm
-            formType="creating"
-            fecharModal={() => {
-              setModalAberto(!modalAberto);
-            }}
-            closeBtnbackgroundColor="red"
-          />
-        )}
-      </>
-      {/* LISTA CONTATOS - mapeando array do STATE*/}
+          closeBtnbackgroundColor="red"
+        />
+      )}
       {contacts.map((contact) => (
         <Contact
           key={contact._id}
           name={contact.contactName}
           number={contact.phoneNumber}
-          buttonImg={PlusIcon}
+          editButtonImg={EditIcon}
           onClick1={() => {
             handleEditClick(contact._id);
-            setEditModalAberto(!editModalAberto);
           }}
         />
       ))}
-
-      {/* MODAL DE EDIÇÃO DE CONTATO */}
-      {editingContact !== null && editModalAberto ? (
+      {editModalAberto && editingContact !== null && (
         <ModalForm
           formType="editing"
           fecharModal={() => {
-            setEditModalAberto(!editModalAberto);
+            setEditModalAberto(false);
           }}
           closeBtnbackgroundColor="red"
           editingContact={editingContact}
         />
-      ) : null}
-      <Contact />
+      )}
     </>
   );
 };
