@@ -1,10 +1,9 @@
 import { ButtonStyled, ButtonImg } from "./styles";
-import EditIcon from "../../icons/pencilIcon.png";
-export const Button = ({ onClick, buttonText, buttonImg }) => {
+export const Button = ({ onClick, editButtonIcon }) => {
   return (
     <>
       <ButtonStyled onClick={onClick}>
-        <ButtonImg src={EditIcon} />
+        <ButtonImg src={editButtonIcon} />
       </ButtonStyled>
       {/* <ButtonImg src={buttonImg} /> */}
     </>

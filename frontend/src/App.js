@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import PlusIcon from "./icons/plusIcon.jpg";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/Home/Home";
 
 function App() {
   //STATES

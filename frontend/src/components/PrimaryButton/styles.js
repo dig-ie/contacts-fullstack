@@ -1,19 +1,15 @@
 import styled from "styled-components";
-
 export const StyledPrimaryButton = styled.button`
-  width: 90%;
-  height: 35px;
-
-  color: white;
-
+  color: black;
+  width: 80%;
+  height: 52px;
   border: none;
-  border-radius: 8px;
-
-  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.75);
-
-  background-color: blue;
-
+  border-radius: 32px;
+  background-color: ${(props) =>
+    props.color != null ? props.color : "transparent"};
   &:hover {
+    background-color: ${(props) =>
+      props.disableHover ? null : "rgb(230, 237, 250)"};
     cursor: pointer;
   }
 `;

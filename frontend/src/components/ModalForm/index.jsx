@@ -1,12 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
-import { FormContainer, StyledLabel, ButtonContainer } from "./styles";
+import {
+  FormContainer,
+  StyledLabel,
+  ButtonContainer,
+  ModalWrapper,
+} from "./styles";
 import { Input } from "../Input";
 import { PrimaryButton } from "../PrimaryButton";
-
 export const ModalForm = ({
   fecharModal,
-  closeBtnbackgroundColor,
+  primaryBtnColor,
+  closeBtnColor,
   formType,
   editingContact,
 }) => {
@@ -15,7 +20,6 @@ export const ModalForm = ({
   const [nome, setNome] = useState("");
   const [editingNome, setEditingNome] = useState("");
   const [editingNumero, setEditingNumero] = useState("");
-
   //POST FUNCTION
   const handleAdicionarClick = async () => {
     try {
@@ -32,7 +36,6 @@ export const ModalForm = ({
       console.error("Erro ao adicionar contato:", error);
     }
   };
-
   //FUNÇÃO PARA ENVIAR O PUT (EDIÇÃO) DO CONTATO PARA O BANCO
   const handleEditSubmit = async (editingContact) => {
     try {
@@ -57,7 +60,7 @@ export const ModalForm = ({
   };
 
   return (
-    <>
+    <ModalWrapper>
       {/* Formulário para POST -------------------*/}
       {formType === "creating" && (
         <FormContainer>
@@ -78,16 +81,18 @@ export const ModalForm = ({
           <PrimaryButton
             buttonText="Adicionar"
             onClick={handleAdicionarClick}
+            color={primaryBtnColor}
+            disableHover={true}
           />
           {/* BOTÃO DE FECHAR - CLOSE BUTTON */}
           <PrimaryButton
             buttonText="Fechar"
             onClick={fecharModal}
-            closeBtnbackgroundColor={closeBtnbackgroundColor}
+            color={closeBtnColor}
+            disableHover={true}
           />
         </FormContainer>
       )}
-
       {/* Formulário para EDITAR CONTATO ---------------------------*/}
       {formType === "editing" && (
         <FormContainer>
@@ -109,19 +114,22 @@ export const ModalForm = ({
             }}
           />
           <PrimaryButton
+            color={primaryBtnColor}
             buttonText="Salvar"
             onClick={() => {
               handleEditSubmit(editingContact);
             }}
+            disableHover={true}
           />
           {/* BOTÃO DE FECHAR - CLOSE BUTTON */}
           <PrimaryButton
             buttonText="Fechar"
             onClick={fecharModal}
-            closeBtnbackgroundColor={closeBtnbackgroundColor}
+            color={closeBtnColor}
+            disableHover={true}
           />
         </FormContainer>
       )}
-    </>
+    </ModalWrapper>
   );
 };

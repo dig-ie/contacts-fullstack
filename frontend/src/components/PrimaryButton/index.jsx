@@ -4,11 +4,14 @@ export const PrimaryButton = ({
   buttonText = "aa",
   onClick,
   closeBtnbackgroundColor,
+  color = null,
+  disableHover = false,
 }) => {
   return (
     <StyledPrimaryButton
-      style={{ backgroundColor: closeBtnbackgroundColor }}
       onClick={onClick}
+      color={color}
+      disableHover={disableHover}
     >
       {buttonText}
     </StyledPrimaryButton>
