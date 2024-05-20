@@ -1,8 +1,9 @@
 import { ButtonStyled, ButtonImg } from "./styles";
-export const Button = ({ onClick, editButtonIcon }) => {
+import {ButtonProps} from "./types"
+export const Button:React.FC<ButtonProps> = ({ onClick, editButtonIcon, color }) => {
   return (
     <>
-      <ButtonStyled onClick={onClick}>
+      <ButtonStyled color={color} onClick={onClick}>
         <ButtonImg src={editButtonIcon} />
       </ButtonStyled>
       {/* <ButtonImg src={buttonImg} /> */}

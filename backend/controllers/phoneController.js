@@ -4,7 +4,7 @@ const Phone = require("../models/phoneModel");
 exports.createPhone = async (req, res) => {
   try {
     const { phoneNumber, contactName } = req.body;
-    const newPhone = await Phone.create({ phoneNumber, contactName });
+    const newPhone = await Phone.create({ phoneNumber, contactName});
     res.status(201).json(newPhone);
   } catch (error) {
     console.error("Erro ao criar número de telefone:", error);

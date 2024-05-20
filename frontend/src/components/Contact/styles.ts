@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { ContactContainerProps } from "./types"
 
-export const ContactContainer = styled.div`
+export const ContactContainer = styled.div<ContactContainerProps>`
   border: none;
   display: flex;
   flex-direction: row;

@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { SearchBar } from "../SearchBar";
-import profileIcon from "../../icons/profileIcon.png";
+// import profileIcon from "../../icons/profileIcon.png";
 export const NavBar = () => {
   return (
     <S.NavBarContainer>
@@ -12,7 +12,7 @@ export const NavBar = () => {
         <S.NavBarTitle>Contatos</S.NavBarTitle>
       </S.LeftSideContainer>
       <S.SearchBarContainer>
-        <SearchBar />
+        <SearchBar placeholder="Buscar" />
       </S.SearchBarContainer>
       <S.ProfileContainer>
         <S.ProfileImage />

@@ -1,10 +1,10 @@
 import { StyledPrimaryButton } from "./styles";
-
-export const PrimaryButton = ({
+import { PrimaryButtonProps, StyledPrimaryButtonProps } from "./types";
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   buttonText = "aa",
   onClick,
-  closeBtnbackgroundColor,
-  color = null,
+  closeBtnbackgroundColor="red",
+  color="blue",
   disableHover = false,
 }) => {
   return (

@@ -11,6 +11,7 @@ export const ButtonStyled = styled.button`
   border-radius: 5px; /* Borda arredondada */
   width: 40px;
   height: 40px;
+  background-color: ${(props)=>props.color ? props.color : null};
 `;
 
 export const ButtonImg = styled.img`

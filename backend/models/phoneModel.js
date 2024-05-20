@@ -9,7 +9,7 @@ const phoneSchema = new mongoose.Schema({
   contactName: {
     type: String,
     required: true,
-  },
+  }
 }); //TODO: FEMALE AND MALE LOGIC
 
 // Criação do modelo 'Phone' baseado no esquema

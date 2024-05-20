@@ -4,7 +4,7 @@ export const Body = styled.body`
   padding-left: 0.5rem;
   margin: 0;
 `;
-export const HomeCotainer = styled.div`
+export const HomeContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
