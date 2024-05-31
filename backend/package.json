@@ -2,12 +2,12 @@
     "version": "1.0.0",
     "description": "Aplicativo full stack de contatos",
     "license": "MIT",
-    "scripts":{
-          "build": "yarn && yarn build"
-        },
     "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.1",
-                    } 
+                    },
+    "scripts":{
+          "build": "yarn build"
+        }
 }
