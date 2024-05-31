@@ -9,8 +9,7 @@ import {
   ContactNumber,
   ButtonContainer,
 } from './styles';
-import axios from 'axios';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Button } from '../Button';
 import { ContactProps } from './types';
 export const Contact: React.FC<ContactProps> = ({
@@ -20,34 +19,19 @@ export const Contact: React.FC<ContactProps> = ({
   buttonText,
   onClick1,
   onClick2,
-  deletingContact,
+  key,
+  onCheckboxChange,
 }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+
+  const handleCheckboxChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ) => {
     setIsChecked(event.target.checked); // Atualiza o estado isChecked
     console.log('Checkbox está marcada:', event.target.checked);
-  };
-
-  const deleteContact = async (contactId: string | undefined) => {
-    try {
-      // Fazendo a requisição DELETE para a rota /contacts/:id
-      const response = await axios.delete(
-        `http://localhost:3000/contacts/${contactId}`,
-      );
-
-      // Verificando se a requisição foi bem-sucedida (status 200)
-      if (response.status === 200) {
-        console.log('Contato deletado com sucesso!');
-        // Se necessário, você pode retornar algum dado da resposta
-        return response.data;
-      }
-    } catch (error) {
-      // Se houver algum erro na requisição, tratamos ele aqui
-      console.error('Erro ao deletar contato:', error);
-      // Você pode lançar o erro novamente ou tratá-lo de outra forma
-      throw error;
-    }
+    //selectedContacts array push
+    onCheckboxChange(key, event.target.checked);
   };
 
   return (
@@ -59,11 +43,7 @@ export const Contact: React.FC<ContactProps> = ({
       <LeftContainer>
         <ImageContainer>
           {isHovered || isChecked ? (
-            <CheckBox
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
-            />
+            <CheckBox type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
           ) : (
             <ProfileImage
               alt="Profile"
@@ -80,11 +60,7 @@ export const Contact: React.FC<ContactProps> = ({
         {isHovered ? (
           <>
             <Button onClick={onClick1} editButtonIcon={'null'} color="yellow" />
-            <Button
-              onClick={() => deleteContact(deletingContact)}
-              editButtonIcon={'null'}
-              color="red"
-            >
+            <Button editButtonIcon={'null'} color="red" onClick={onClick2}>
               {buttonText}
             </Button>
           </>

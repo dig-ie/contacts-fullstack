@@ -6,7 +6,8 @@ const routes = require("./routes/routes");
 const app = express();
 // app.use(cors({ origin: "http://localhost:3001" }));
 // URL de conexão do MongoDB
-const mongoURI = "mongodb://localhost:27017/contacts";
+const mongoURI =
+  "mongodb+srv://debarrosdiego415:LQTZJ3SEEgiGhUHt@cluster0.zcbo6nu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0;";
 
 // Configuração da conexão com o MongoDB
 mongoose.connect(mongoURI);
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(routes);
 
 // Inicia o servidor Express
-const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor Express ouvindo na porta ${PORT}`);
 });

@@ -4,7 +4,7 @@ const Phone = require("../models/phoneModel");
 exports.createPhone = async (req, res) => {
   try {
     const { phoneNumber, contactName } = req.body;
-    const newPhone = await Phone.create({ phoneNumber, contactName});
+    const newPhone = await Phone.create({ phoneNumber, contactName });
     res.status(201).json(newPhone);
   } catch (error) {
     console.error("Erro ao criar número de telefone:", error);
@@ -17,7 +17,7 @@ exports.getAllPhones = async (req, res) => {
   try {
     const phones = await Phone.find();
     res.status(200).json(phones);
-    console.log("SUCESSO ------------------1");
+    console.log("GetAllPhones = Sucesso");
   } catch (error) {
     console.error("Erro ao buscar números de telefone:", error);
     res.status(500).json({ error: "Erro interno do servidor" });
